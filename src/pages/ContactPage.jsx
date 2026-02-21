@@ -21,21 +21,21 @@ export default function ContactPage() {
           <MapPin className="h-8 w-8 text-indigo-600" />
           <h3 className="text-lg font-semibold">Our Location</h3>
           <p className="text-gray-600 text-sm">
-            123 VAVA Street, Knowledge City, India
+            123 A Pradeep Ramvihar Colony Agra 282006, India
           </p>
         </div>
         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6 flex flex-col items-center text-center gap-4">
           <Phone className="h-8 w-8 text-indigo-600" />
           <h3 className="text-lg font-semibold">Call Us</h3>
           <p className="text-gray-600 text-sm">
-            +91 98765 43210
+            +91 9808885514
           </p>
         </div>
         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6 flex flex-col items-center text-center gap-4">
           <Mail className="h-8 w-8 text-indigo-600" />
           <h3 className="text-lg font-semibold">Email</h3>
           <p className="text-gray-600 text-sm">
-            support@vava.com
+            vimal251294gupta@gmail.com
           </p>
         </div>
       </section>
