@@ -75,7 +75,7 @@ export default function Footer() {
         <div className="space-y-4">
           <h4 className="text-lg font-semibold mb-2">Contact</h4>
           <ul className="space-y-2 text-gray-400">
-            <li className="flex items-center gap-2"><Mail size={18} /> info@vava.com</li>
+            <li className="flex items-center gap-2"><Mail size={18} /> vimal251294gupta@gmail.com</li>
             <li className="flex items-center gap-2"><Phone size={18} /> +91 9808885514</li>
             <li className="flex items-center gap-2"><MapPin size={18} /> 123 A Pradeep Ramvihar Colony Agra 282006, India</li>
           </ul>
