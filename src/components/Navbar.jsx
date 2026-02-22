@@ -54,7 +54,10 @@ const handleLogin = (e) => {
 
             {/* Dark/Light Toggle */}
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+    console.log("Theme button clicked");
+    toggleTheme();
+  }}
               className="w-11 h-10 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
             >
               {currentTheme === "light" ? (

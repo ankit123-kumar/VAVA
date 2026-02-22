@@ -106,6 +106,9 @@ export default function Footer() {
       <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
         &copy; {new Date().getFullYear()} VAVA. All rights reserved.
       </div>
+       <div className="mt-12 pt-6 text-center text-gray-500 text-sm">
+         Developed by Ankit Kumar
+      </div>
     </footer>
   );
 }

@@ -36,7 +36,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpjoJ25GOhocVtM7se3LI-jp",
     },
      {
-      id: 3,
+      id: 4,
       title: "C-TET",
       description: "A complete preparation course C-TET exam.",
       image:
@@ -48,7 +48,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCph2D6N7TSHDuOeu45DqzrrM",
     },
      {
-      id: 4,
+      id: 5,
       title: "Class 11th Maths",
       description: "Class 11 Maths series by vimal sir",
       image:
@@ -60,7 +60,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpjfJwj29cmg2Ac7ca9hSGvl",
     },
     {
-      id: 4,
+      id: 6,
       title: "Class 12th Maths",
       description: "Class 12 Maths series by vimal sir",
       image:
@@ -72,7 +72,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpgbYL7hxR-ub5T_2EDH4Y5i",
     },
      {
-      id: 4,
+      id: 7,
       title: "Class 10th Maths",
       description: "Class 10 Maths series by vimal sir",
       image:
@@ -84,7 +84,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCphc7yVXVcSyrAnVv3ENjsJr",
     },
     {
-      id: 4,
+      id: 8,
       title: "Class 9th Maths",
       description: "Class 9th Maths series by vimal sir",
       image:
@@ -96,7 +96,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpjMLYDGLSmzFLOa4e7V5a6m",
     },
      {
-      id: 4,
+      id: 9,
       title: "UP-TET",
       description: "UP-TET exam series by vimal sir",
       image:
@@ -108,7 +108,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpiYfaCzwiDojZ4qraBBWiGP",
     },
      {
-      id: 4,
+      id: 10,
       title: "SSC-CGL,CHSL,MTS,RRB,NTPC",
       description: "All SSC exam series by vimal sir",
       image:
@@ -120,7 +120,7 @@ export const courses = [
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCph0KCEQWL5nn8cR9bSQ_buO",
     },
     {
-      id: 5,
+      id: 11,
       title: "Polytechnic 2nd Semester",
       description: "polytechnic second semester series by vimal sir",
       image:
