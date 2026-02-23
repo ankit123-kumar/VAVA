@@ -46,27 +46,31 @@ export default function StudentDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="h-screen bg-gray-100 flex overflow-hidden">
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:static z-40 top-0 left-0 h-full bg-white shadow-lg
-        flex flex-col justify-between transition-all duration-300
-        ${collapsed ? "w-20" : "w-64"}
-        ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
+        className={`
+          fixed md:static
+          top-0 left-0 z-40
+          h-full md:h-screen
+          bg-white shadow-lg
+          flex flex-col justify-between
+          transition-all duration-300
+          ${collapsed ? "w-20" : "w-64"}
+          ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+        `}
       >
         <div>
           {/* Logo */}
           <div className="flex items-center justify-between p-4">
             {!collapsed && (
-              <div className="flex items-center space-x-3">
-                <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-purple-500 to-yellow-400">
-                  VAVA
-                </h1>
-              </div>
+              <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-purple-500 to-yellow-400">
+                VAVA
+              </h1>
             )}
 
-            {/* Collapse button desktop */}
+            {/* Desktop collapse */}
             <button
               onClick={() => setCollapsed(!collapsed)}
               className="p-2 rounded-lg hover:bg-gray-100 hidden md:block"
@@ -86,24 +90,15 @@ export default function StudentDashboard() {
                     setActive(item.key);
                     setMobileOpen(false);
                   }}
-                  className={`group relative flex items-center gap-3 w-full px-3 py-2 rounded-lg transition 
-                  ${
-                    active === item.key
-                      ? "bg-indigo-100 text-indigo-600"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
+                  className={`group flex items-center gap-3 w-full px-3 py-2 rounded-lg transition
+                    ${
+                      active === item.key
+                        ? "bg-indigo-100 text-indigo-600"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
                 >
                   <Icon size={20} />
                   {!collapsed && <span>{item.label}</span>}
-
-                  {/* Tooltip */}
-                  {collapsed && (
-                    <span className="absolute left-14 bg-gray-900 text-white 
-                      text-xs px-2 py-1 rounded opacity-0 
-                      group-hover:opacity-100 transition">
-                      {item.label}
-                    </span>
-                  )}
                 </button>
               );
             })}
@@ -120,7 +115,7 @@ export default function StudentDashboard() {
         </button>
       </aside>
 
-      {/* Mobile Overlay */}
+      {/* Overlay mobile */}
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-30 md:hidden"
@@ -129,10 +124,10 @@ export default function StudentDashboard() {
       )}
 
       {/* Main */}
-      <div className="flex-1 p-4 md:p-6">
+      <div className="flex-1 w-full p-4 md:p-6 overflow-y-auto">
 
         {/* Header */}
-        <header className="flex justify-between items-center mb-6">
+        <header className="flex justify-between items-center mb-6 sticky top-0 bg-gray-100 z-10 py-2">
           <div className="flex items-center gap-3">
             {/* Mobile menu */}
             <button
@@ -161,7 +156,7 @@ export default function StudentDashboard() {
           </div>
         </header>
 
-        {/* Dynamic Dashboard Content */}
+        {/* Content */}
         {active === "dashboard" && (
           <DashboardHome
             upcomingTests={upcomingTests}
