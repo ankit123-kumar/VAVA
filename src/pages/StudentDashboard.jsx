@@ -116,12 +116,11 @@ export default function StudentDashboard() {
       </aside>
 
       {/* Overlay mobile */}
-      {mobileOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 z-30 md:hidden"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
+     <div
+  className={`fixed inset-0 bg-black/40 z-30 md:hidden transition-opacity
+  ${mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+  onClick={() => setMobileOpen(false)}
+/>
 
       {/* Main */}
       <div className="flex-1 w-full p-4 md:p-6 overflow-y-auto">
