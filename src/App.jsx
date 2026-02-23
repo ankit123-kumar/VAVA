@@ -8,6 +8,7 @@ import CoursesPage from "./pages/CoursesPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import Gallery from "./pages/Gallary";
 
 import PublicLayout from "./layouts/PublicLayout";
 import StudentLayout from "./layouts/StudentLayout";
@@ -59,6 +60,7 @@ function App() {
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/gallary" element={<Gallery />} />
           </Route>
 
           {/* Student Pages */}

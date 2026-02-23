@@ -40,6 +40,7 @@ const handleLogin = (e) => {
             <a href="/courses" className={linkClass}>Courses</a>
             <a href="/about" className={linkClass}>About</a>
             <a href="/contact" className={linkClass}>Contact</a>
+             <a href="/gallary" className={linkClass}>Gallery</a>
           </nav>
 
           {/* Desktop Actions */}
