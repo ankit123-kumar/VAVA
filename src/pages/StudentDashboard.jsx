@@ -20,6 +20,7 @@ import {
 export default function StudentDashboard() {
   const [active, setActive] = useState("dashboard");
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const upcomingTests = [
     { id: 1, name: "SSC Weekly Test 1", date: "25 Feb 2026" },
@@ -49,25 +50,26 @@ export default function StudentDashboard() {
 
       {/* Sidebar */}
       <aside
-        className={`bg-white shadow-lg flex flex-col justify-between 
-        transition-all duration-300 
-        ${collapsed ? "w-20" : "w-64"}`}
+        className={`fixed md:static z-40 top-0 left-0 h-full bg-white shadow-lg
+        flex flex-col justify-between transition-all duration-300
+        ${collapsed ? "w-20" : "w-64"}
+        ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
       >
         <div>
           {/* Logo */}
           <div className="flex items-center justify-between p-4">
             {!collapsed && (
               <div className="flex items-center space-x-3">
-            {/* <img src="/logo.png" alt="VAVA Logo" className="h-14 w-14 object-contain" /> */}
-            <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-purple-500 to-yellow-400">
-              VAVA
-            </h1>
-          </div>
+                <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-purple-500 to-yellow-400">
+                  VAVA
+                </h1>
+              </div>
             )}
 
+            {/* Collapse button desktop */}
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="p-2 rounded-lg hover:bg-gray-100"
+              className="p-2 rounded-lg hover:bg-gray-100 hidden md:block"
             >
               <Menu />
             </button>
@@ -80,7 +82,10 @@ export default function StudentDashboard() {
               return (
                 <button
                   key={item.key}
-                  onClick={() => setActive(item.key)}
+                  onClick={() => {
+                    setActive(item.key);
+                    setMobileOpen(false);
+                  }}
                   className={`group relative flex items-center gap-3 w-full px-3 py-2 rounded-lg transition 
                   ${
                     active === item.key
@@ -89,17 +94,13 @@ export default function StudentDashboard() {
                   }`}
                 >
                   <Icon size={20} />
-
-                  {/* Label */}
                   {!collapsed && <span>{item.label}</span>}
 
                   {/* Tooltip */}
                   {collapsed && (
-                    <span
-                      className="absolute left-14 bg-gray-900 text-white 
+                    <span className="absolute left-14 bg-gray-900 text-white 
                       text-xs px-2 py-1 rounded opacity-0 
-                      group-hover:opacity-100 transition"
-                    >
+                      group-hover:opacity-100 transition">
                       {item.label}
                     </span>
                   )}
@@ -119,12 +120,32 @@ export default function StudentDashboard() {
         </button>
       </aside>
 
+      {/* Mobile Overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-30 md:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
       {/* Main */}
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-4 md:p-6">
 
         {/* Header */}
         <header className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-semibold">Welcome, Student 👋</h2>
+          <div className="flex items-center gap-3">
+            {/* Mobile menu */}
+            <button
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              onClick={() => setMobileOpen(true)}
+            >
+              <Menu />
+            </button>
+
+            <h2 className="text-xl md:text-2xl font-semibold">
+              Welcome, Student 👋
+            </h2>
+          </div>
 
           <div className="flex items-center gap-4">
             <button className="relative">
@@ -139,19 +160,19 @@ export default function StudentDashboard() {
             />
           </div>
         </header>
-{/* Dynamic Dashboard Content */}
 
-{active === "dashboard" && (
-  <DashboardHome
-    upcomingTests={upcomingTests}
-    recentResults={recentResults}
-  />
-)}
+        {/* Dynamic Dashboard Content */}
+        {active === "dashboard" && (
+          <DashboardHome
+            upcomingTests={upcomingTests}
+            recentResults={recentResults}
+          />
+        )}
 
-{active === "tests" && <AllTests />}
-{active === "results" && <Results />}
-{active === "leaderboard" && <Leaderboard />}
-{active === "profile" && <Profile />}
+        {active === "tests" && <AllTests />}
+        {active === "results" && <Results />}
+        {active === "leaderboard" && <Leaderboard />}
+        {active === "profile" && <Profile />}
       </div>
     </div>
   );
