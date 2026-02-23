@@ -85,7 +85,7 @@ export default function ContactPage() {
     <div className="w-full h-64 rounded-xl shadow-inner overflow-hidden">
       <iframe
         title="Google Map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9022797155784!2d90.39122421543256!3d23.750866294628655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b894c55f40ff%3A0x6f6b3c12345abcd!2sYour%20Location!5e0!3m2!1sen!2sin!4v1695112597744!5m2!1sen!2sin"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14192.864053960277!2d78.04122655541995!3d27.212367000000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397471e2d9f33aa7%3A0x8e8b417e4784c9c8!2s123%20A!5e0!3m2!1sen!2sin!4v1771856161045!5m2!1sen!2sin"
         width="100%"
         height="100%"
         style={{ border: 0 }}

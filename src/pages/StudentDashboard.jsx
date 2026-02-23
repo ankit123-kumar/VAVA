@@ -1,88 +1,157 @@
 // src/pages/StudentDashboard.jsx
-import React from "react";
-import { Bell, User, BookOpen, CheckCircle } from "lucide-react";
+import DashboardHome from "./dashboard/DashboardHome";
+import AllTests from "./dashboard/AllTests";
+import Results from "./dashboard/Results";
+import Leaderboard from "./dashboard/Leaderboard";
+import Profile from "./dashboard/Profile";
+
+import React, { useState } from "react";
+import {
+  Bell,
+  User,
+  ClipboardList,
+  BarChart3,
+  Trophy,
+  LogOut,
+  Home,
+  Menu,
+} from "lucide-react";
 
 export default function StudentDashboard() {
+  const [active, setActive] = useState("dashboard");
+  const [collapsed, setCollapsed] = useState(false);
+
+  const upcomingTests = [
+    { id: 1, name: "SSC Weekly Test 1", date: "25 Feb 2026" },
+    { id: 2, name: "Banking Mock Test", date: "27 Feb 2026" },
+  ];
+
+  const recentResults = [
+    { id: 1, test: "SSC Test", score: 78, rank: 12 },
+    { id: 2, test: "Reasoning Quiz", score: 85, rank: 5 },
+  ];
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
+  const menu = [
+    { key: "dashboard", label: "Dashboard", icon: Home },
+    { key: "tests", label: "All Tests", icon: ClipboardList },
+    { key: "results", label: "Results", icon: BarChart3 },
+    { key: "leaderboard", label: "Leaderboard", icon: Trophy },
+    { key: "profile", label: "Profile", icon: User },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100 flex">
 
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md p-6 hidden md:block">
-        <h1 className="text-2xl font-bold mb-8">Dashboard</h1>
-        <nav className="space-y-4">
-          <a href="#" className="flex items-center gap-2 text-gray-700 hover:text-indigo-600">
-            <BookOpen size={18} /> My Courses
-          </a>
-          <a href="#" className="flex items-center gap-2 text-gray-700 hover:text-indigo-600">
-            <CheckCircle size={18} /> Progress
-          </a>
-          <a href="#" className="flex items-center gap-2 text-gray-700 hover:text-indigo-600">
-            <User size={18} /> Profile
-          </a>
-        </nav>
+      <aside
+        className={`bg-white shadow-lg flex flex-col justify-between 
+        transition-all duration-300 
+        ${collapsed ? "w-20" : "w-64"}`}
+      >
+        <div>
+          {/* Logo */}
+          <div className="flex items-center justify-between p-4">
+            {!collapsed && (
+              <div className="flex items-center space-x-3">
+            {/* <img src="/logo.png" alt="VAVA Logo" className="h-14 w-14 object-contain" /> */}
+            <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-purple-500 to-yellow-400">
+              VAVA
+            </h1>
+          </div>
+            )}
+
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              className="p-2 rounded-lg hover:bg-gray-100"
+            >
+              <Menu />
+            </button>
+          </div>
+
+          {/* Menu */}
+          <nav className="space-y-2 px-2">
+            {menu.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.key}
+                  onClick={() => setActive(item.key)}
+                  className={`group relative flex items-center gap-3 w-full px-3 py-2 rounded-lg transition 
+                  ${
+                    active === item.key
+                      ? "bg-indigo-100 text-indigo-600"
+                      : "text-gray-600 hover:bg-gray-100"
+                  }`}
+                >
+                  <Icon size={20} />
+
+                  {/* Label */}
+                  {!collapsed && <span>{item.label}</span>}
+
+                  {/* Tooltip */}
+                  {collapsed && (
+                    <span
+                      className="absolute left-14 bg-gray-900 text-white 
+                      text-xs px-2 py-1 rounded opacity-0 
+                      group-hover:opacity-100 transition"
+                    >
+                      {item.label}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* Logout */}
+        <button
+          onClick={logout}
+          className="flex items-center gap-2 text-red-500 hover:bg-red-50 p-3 m-2 rounded-lg"
+        >
+          <LogOut size={18} />
+          {!collapsed && "Logout"}
+        </button>
       </aside>
 
-      {/* Main Content */}
+      {/* Main */}
       <div className="flex-1 p-6">
+
         {/* Header */}
         <header className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-semibold">Welcome, Ankit</h2>
+          <h2 className="text-2xl font-semibold">Welcome, Student 👋</h2>
+
           <div className="flex items-center gap-4">
             <button className="relative">
-              <Bell size={24} className="text-gray-600 hover:text-indigo-600" />
+              <Bell size={22} />
               <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
-            <img 
-              src="https://i.pravatar.cc/40" 
-              alt="Profile" 
+
+            <img
+              src="https://i.pravatar.cc/40"
+              alt="profile"
               className="w-10 h-10 rounded-full"
             />
           </div>
         </header>
+{/* Dynamic Dashboard Content */}
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-          <div className="bg-white p-4 rounded-lg shadow flex flex-col">
-            <span className="text-gray-500">Total Courses</span>
-            <h3 className="text-2xl font-bold mt-2">8</h3>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow flex flex-col">
-            <span className="text-gray-500">Completed</span>
-            <h3 className="text-2xl font-bold mt-2">5</h3>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow flex flex-col">
-            <span className="text-gray-500">Pending</span>
-            <h3 className="text-2xl font-bold mt-2">3</h3>
-          </div>
-        </div>
+{active === "dashboard" && (
+  <DashboardHome
+    upcomingTests={upcomingTests}
+    recentResults={recentResults}
+  />
+)}
 
-        {/* Courses List */}
-        <section>
-          <h3 className="text-xl font-semibold mb-4">My Courses</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
-              <h4 className="font-semibold text-lg mb-2">React Basics</h4>
-              <p className="text-gray-500 mb-2">Progress: 80%</p>
-              <div className="w-full bg-gray-200 h-2 rounded">
-                <div className="bg-indigo-600 h-2 rounded" style={{ width: "80%" }}></div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
-              <h4 className="font-semibold text-lg mb-2">Spring Boot</h4>
-              <p className="text-gray-500 mb-2">Progress: 60%</p>
-              <div className="w-full bg-gray-200 h-2 rounded">
-                <div className="bg-indigo-600 h-2 rounded" style={{ width: "60%" }}></div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
-              <h4 className="font-semibold text-lg mb-2">Java Fundamentals</h4>
-              <p className="text-gray-500 mb-2">Progress: 100%</p>
-              <div className="w-full bg-gray-200 h-2 rounded">
-                <div className="bg-indigo-600 h-2 rounded" style={{ width: "100%" }}></div>
-              </div>
-            </div>
-          </div>
-        </section>
+{active === "tests" && <AllTests />}
+{active === "results" && <Results />}
+{active === "leaderboard" && <Leaderboard />}
+{active === "profile" && <Profile />}
       </div>
     </div>
   );
