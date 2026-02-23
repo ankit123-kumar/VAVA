@@ -46,33 +46,38 @@ export default function StudentDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="min-h-screen bg-gray-100 flex overflow-hidden">
 
-      {/* Sidebar */}
+      {/* ✅ MOBILE OVERLAY FIX */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 z-40 md:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      {/* ✅ Sidebar */}
       <aside
-  className={`
-    fixed md:static
-    top-0 left-0 z-50
-    h-full md:h-screen
-    bg-white shadow-lg
-    flex flex-col justify-between
-    transition-all duration-300
-    transform-gpu
-    ${collapsed ? "w-20" : "w-64"}
-    ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
-  `}
-  style={{ willChange: "transform" }}
->
+        className={`
+          fixed md:static
+          top-0 left-0 z-50
+          h-full md:h-screen
+          bg-white shadow-lg
+          flex flex-col justify-between
+          transition-transform duration-300
+          ${collapsed ? "w-20" : "w-64"}
+          ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+        `}
+      >
         <div>
           {/* Logo */}
           <div className="flex items-center justify-between p-4">
             {!collapsed && (
-              <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-purple-500 to-yellow-400">
+              <h1 className="text-3xl font-extrabold bg-gradient-to-r from-green-400 via-purple-500 to-yellow-400 bg-clip-text text-transparent">
                 VAVA
               </h1>
             )}
 
-            {/* Desktop collapse */}
             <button
               onClick={() => setCollapsed(!collapsed)}
               className="p-2 rounded-lg hover:bg-gray-100 hidden md:block"
@@ -92,7 +97,7 @@ export default function StudentDashboard() {
                     setActive(item.key);
                     setMobileOpen(false);
                   }}
-                  className={`group flex items-center gap-3 w-full px-3 py-2 rounded-lg transition
+                  className={`flex items-center gap-3 w-full px-3 py-2 rounded-lg transition
                     ${
                       active === item.key
                         ? "bg-indigo-100 text-indigo-600"
@@ -117,20 +122,12 @@ export default function StudentDashboard() {
         </button>
       </aside>
 
-      {/* Overlay mobile */}
-     <div
-  className={`fixed inset-0 bg-black/40 z-30 md:hidden transition-opacity
-  ${mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
-  onClick={() => setMobileOpen(false)}
-/>
-
-      {/* Main */}
-      <div className="flex-1 w-full p-4 md:p-6 overflow-y-auto relative">
+      {/* ✅ MAIN */}
+      <div className="flex-1 w-full relative">
 
         {/* Header */}
-       <header className="flex justify-between items-center mb-6 sticky top-0 bg-gray-100 z-20 py-2">
+        <header className="flex justify-between items-center sticky top-0 bg-gray-100 z-30 px-4 md:px-6 py-3">
           <div className="flex items-center gap-3">
-            {/* Mobile menu */}
             <button
               className="md:hidden p-2 rounded-lg hover:bg-gray-100"
               onClick={() => setMobileOpen(true)}
@@ -146,7 +143,7 @@ export default function StudentDashboard() {
           <div className="flex items-center gap-4">
             <button className="relative">
               <Bell size={22} />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full" />
             </button>
 
             <img
@@ -158,17 +155,18 @@ export default function StudentDashboard() {
         </header>
 
         {/* Content */}
-        {active === "dashboard" && (
-          <DashboardHome
-            upcomingTests={upcomingTests}
-            recentResults={recentResults}
-          />
-        )}
-
-        {active === "tests" && <AllTests />}
-        {active === "results" && <Results />}
-        {active === "leaderboard" && <Leaderboard />}
-        {active === "profile" && <Profile />}
+        <main className="p-4 md:p-6 overflow-y-auto">
+          {active === "dashboard" && (
+            <DashboardHome
+              upcomingTests={upcomingTests}
+              recentResults={recentResults}
+            />
+          )}
+          {active === "tests" && <AllTests />}
+          {active === "results" && <Results />}
+          {active === "leaderboard" && <Leaderboard />}
+          {active === "profile" && <Profile />}
+        </main>
       </div>
     </div>
   );
