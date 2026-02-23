@@ -46,21 +46,23 @@ export default function StudentDashboard() {
   ];
 
   return (
-    <div className="h-screen bg-gray-100 flex overflow-hidden">
+    <div className="min-h-screen bg-gray-100 flex">
 
       {/* Sidebar */}
       <aside
-        className={`
-          fixed md:static
-          top-0 left-0 z-40
-          h-full md:h-screen
-          bg-white shadow-lg
-          flex flex-col justify-between
-          transition-all duration-300
-          ${collapsed ? "w-20" : "w-64"}
-          ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
-        `}
-      >
+  className={`
+    fixed md:static
+    top-0 left-0 z-50
+    h-full md:h-screen
+    bg-white shadow-lg
+    flex flex-col justify-between
+    transition-all duration-300
+    transform-gpu
+    ${collapsed ? "w-20" : "w-64"}
+    ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+  `}
+  style={{ willChange: "transform" }}
+>
         <div>
           {/* Logo */}
           <div className="flex items-center justify-between p-4">
@@ -123,10 +125,10 @@ export default function StudentDashboard() {
 />
 
       {/* Main */}
-      <div className="flex-1 w-full p-4 md:p-6 overflow-y-auto">
+      <div className="flex-1 w-full p-4 md:p-6 overflow-y-auto relative">
 
         {/* Header */}
-        <header className="flex justify-between items-center mb-6 sticky top-0 bg-gray-100 z-10 py-2">
+       <header className="flex justify-between items-center mb-6 sticky top-0 bg-gray-100 z-20 py-2">
           <div className="flex items-center gap-3">
             {/* Mobile menu */}
             <button
