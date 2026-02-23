@@ -9,6 +9,8 @@ import StudentDashboard from "./pages/StudentDashboard";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import Gallery from "./pages/Gallary";
+import AllTests from "./pages/dashboard/AllTests";
+import TestPage from "./pages/dashboard/TestPage";
 
 import PublicLayout from "./layouts/PublicLayout";
 import StudentLayout from "./layouts/StudentLayout";
@@ -49,12 +51,7 @@ function App() {
         <Routes>
           {/* Public Pages */}
           <Route
-            element={
-              <PublicLayout
-                toggleTheme={toggleTheme}
-                currentTheme={theme}
-              />
-            }
+            element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme} />}
           >
             <Route path="/" element={<LandingPage />} />
             <Route path="/courses" element={<CoursesPage />} />
@@ -66,6 +63,9 @@ function App() {
           {/* Student Pages */}
           <Route element={<StudentLayout />}>
             <Route path="/dashboard" element={<StudentDashboard />} />
+            {/* Test Pages */}
+            <Route path="/tests" element={<AllTests />} />
+            <Route path="/test/:testId" element={<TestPage />} />
           </Route>
         </Routes>
       </div>
