@@ -1,6 +1,6 @@
 import { Instagram, Facebook, Youtube, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
-export default function Footer() {
+export default function Footer({ theme }) {
   return (
     <footer className="w-full bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-6 md:px-20 flex flex-col md:flex-row justify-between gap-10">

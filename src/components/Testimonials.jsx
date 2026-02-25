@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 
-export default function Testimonials() {
+export default function Testimonials({ theme }) {
   const reviews = [
     {
       name: "Aarav Sharma",
@@ -32,13 +32,26 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-white" id="testimonials">
+    <section
+      id="testimonials"
+      className={`py-20 ${theme === "dark" ? "bg-slate-950" : "bg-white"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">
-          What Our <span className="text-indigo-600">Students Say</span>
+        <h2
+          className={`text-3xl md:text-4xl font-extrabold ${theme === "dark" ? "text-slate-100" : "text-gray-800"
+            }`}
+        >
+          What Our{" "}
+          <span className={theme === "dark" ? "text-indigo-400" : "text-indigo-600"}>
+            Students Say
+          </span>
         </h2>
-        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+        <p
+          className={`mt-3 max-w-2xl mx-auto ${theme === "dark" ? "text-slate-400" : "text-gray-600"
+            }`}
+        >
           Hear from learners who transformed their careers with our courses.
         </p>
 
@@ -47,7 +60,10 @@ export default function Testimonials() {
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow"
+              className={`p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow ${theme === "dark"
+                  ? "bg-slate-900 border border-slate-800 hover:shadow-indigo-500/10"
+                  : "bg-gray-50"
+                }`}
             >
               {/* User Image */}
               <img
@@ -56,21 +72,27 @@ export default function Testimonials() {
                 className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
               />
               {/* Name + Role */}
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3
+                className={`text-lg font-semibold ${theme === "dark" ? "text-slate-100" : "text-gray-800"
+                  }`}
+              >
                 {review.name}
               </h3>
-              <p className="text-sm text-gray-500">{review.role}</p>
+
+              <p className={theme === "dark" ? "text-slate-400 text-sm" : "text-gray-500 text-sm"}>
+                {review.role}
+              </p>
               {/* Feedback */}
-              <p className="mt-4 text-gray-600 text-sm leading-relaxed">
+              <p
+                className={`mt-4 text-sm leading-relaxed ${theme === "dark" ? "text-slate-300" : "text-gray-600"
+                  }`}
+              >
                 “{review.feedback}”
               </p>
               {/* Rating */}
               <div className="mt-4 flex justify-center">
                 {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-5 h-5 text-yellow-400 fill-yellow-400"
-                  />
+                  <Star className={`w-5 h-5 ${theme === "dark" ? "text-yellow-300 fill-yellow-300" : "text-yellow-400 fill-yellow-400"}`} />
                 ))}
               </div>
             </div>

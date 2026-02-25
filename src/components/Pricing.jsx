@@ -1,6 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 
-export default function Pricing() {
+export default function Pricing({ theme }) {
   const plans = [
     {
       name: "Starter",
@@ -40,13 +40,29 @@ export default function Pricing() {
   ];
 
   return (
-    <section className="relative py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50" id="pricing">
+    <section
+      id="pricing"
+      className={`relative py-24 ${theme === "dark"
+          ? "bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950"
+          : "bg-linear-to-br from-indigo-50 via-white to-purple-50"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800">
-          Flexible <span className="text-indigo-600">Pricing</span> for Everyone
+        <h2
+          className={`text-4xl md:text-5xl font-extrabold ${theme === "dark" ? "text-slate-100" : "text-gray-800"
+            }`}
+        >
+          Flexible{" "}
+          <span className={theme === "dark" ? "text-indigo-400" : "text-indigo-600"}>
+            Pricing
+          </span>{" "}
+          for Everyone
         </h2>
-        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+        <p
+          className={`mt-4 max-w-2xl mx-auto ${theme === "dark" ? "text-slate-400" : "text-gray-600"
+            }`}
+        >
           Start for free, upgrade anytime. No hidden charges.
         </p>
 
@@ -55,15 +71,23 @@ export default function Pricing() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-3xl backdrop-blur-xl border shadow-2xl p-10 transition transform hover:-translate-y-3 ${
-                plan.highlight
-                  ? "bg-gradient-to-br from-indigo-600 to-purple-600 text-white scale-105"
-                  : "bg-white/70 border-gray-200"
-              }`}
+              className={`relative rounded-3xl backdrop-blur-xl border shadow-2xl p-10 transition transform hover:-translate-y-3 ${plan.highlight
+                  ? theme === "dark"
+                    ? "bg-linear-to-br from-indigo-500 via-violet-600 to-purple-600 text-white scale-105 border-indigo-500/40"
+                    : "bg-linear-to-br from-indigo-600 to-purple-600 text-white scale-105"
+                  : theme === "dark"
+                    ? "bg-slate-900/70 border-slate-800 text-slate-100"
+                    : "bg-white/70 border-gray-200 text-gray-800"
+                }`}
             >
               {/* Ribbon */}
               {plan.highlight && (
-                <span className="absolute top-4 right-4 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow">
+                <span
+                  className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full shadow ${theme === "dark"
+                      ? "bg-yellow-300 text-gray-900"
+                      : "bg-yellow-400 text-gray-900"
+                    }`}
+                >
                   Best Value
                 </span>
               )}
@@ -79,9 +103,12 @@ export default function Pricing() {
 
               {/* Divider */}
               <div
-                className={`my-6 h-[2px] ${
-                  plan.highlight ? "bg-white/40" : "bg-gray-200"
-                }`}
+                className={`my-6 h-0.5 ${plan.highlight
+                    ? "bg-white/40"
+                    : theme === "dark"
+                      ? "bg-slate-700"
+                      : "bg-gray-200"
+                  }`}
               ></div>
 
               {/* Features */}
@@ -90,22 +117,29 @@ export default function Pricing() {
                   <li key={i} className="flex items-center gap-3 text-base">
                     <CheckCircle2
                       size={22}
-                      className={`${
-                        plan.highlight ? "text-yellow-300" : "text-indigo-600"
-                      }`}
+                      className={
+                        plan.highlight
+                          ? "text-yellow-300"
+                          : theme === "dark"
+                            ? "text-indigo-400"
+                            : "text-indigo-600"
+                      }
                     />
-                    <span>{feature}</span>
+                    <span className={theme === "dark" && !plan.highlight ? "text-slate-300" : ""}>
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
 
               {/* Button */}
               <button
-                className={`mt-10 w-full py-3 rounded-xl font-semibold transition shadow-lg ${
-                  plan.highlight
+                className={`mt-10 w-full py-3 rounded-xl font-semibold transition shadow-lg ${plan.highlight
                     ? "bg-white text-indigo-700 hover:bg-gray-100"
-                    : "bg-indigo-600 text-white hover:bg-indigo-700"
-                }`}
+                    : theme === "dark"
+                      ? "bg-indigo-500 text-white hover:bg-indigo-600"
+                      : "bg-indigo-600 text-white hover:bg-indigo-700"
+                  }`}
               >
                 {plan.highlight ? "Get Started" : "Choose Plan"}
               </button>

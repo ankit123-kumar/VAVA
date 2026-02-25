@@ -1,4 +1,4 @@
-export default function CTA() {
+export default function CTA({ theme }) {
   return (
     <section className="relative py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center">
       <div className="max-w-4xl mx-auto px-6">

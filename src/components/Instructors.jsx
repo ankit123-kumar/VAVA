@@ -1,4 +1,4 @@
-export default function Instructors() {
+export default function Instructors({ theme }) {
   const instructors = [
     {
       name: "Dr. Neha Kapoor",
@@ -27,13 +27,26 @@ export default function Instructors() {
   ];
 
   return (
-    <section className="py-20 bg-gray-50" id="instructors">
+    <section
+      id="instructors"
+      className={`py-20 ${theme === "dark" ? "bg-slate-950" : "bg-gray-50"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">
-          Meet Our <span className="text-indigo-600">Instructors</span>
+        <h2
+          className={`text-3xl md:text-4xl font-extrabold ${theme === "dark" ? "text-slate-100" : "text-gray-800"
+            }`}
+        >
+          Meet Our{" "}
+          <span className={theme === "dark" ? "text-indigo-400" : "text-indigo-600"}>
+            Instructors
+          </span>
         </h2>
-        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+        <p
+          className={`mt-3 max-w-2xl mx-auto ${theme === "dark" ? "text-slate-400" : "text-gray-600"
+            }`}
+        >
           Learn from experienced mentors who bring real-world expertise into
           every lesson.
         </p>
@@ -43,23 +56,38 @@ export default function Instructors() {
           {instructors.map((instructor, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6"
+              className={`rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6 ${theme === "dark"
+                  ? "bg-slate-900 border border-slate-800 hover:shadow-indigo-500/10"
+                  : "bg-white"
+                }`}
             >
               {/* Instructor Image */}
               <img
                 src={instructor.image}
                 alt={instructor.name}
-                className="w-28 h-28 rounded-full mx-auto object-cover border-4 border-indigo-100"
+                className={`w-28 h-28 rounded-full mx-auto object-cover border-4 ${theme === "dark" ? "border-indigo-500/30" : "border-indigo-100"
+                  }`}
               />
               {/* Name + Role */}
-              <h3 className="mt-4 text-lg font-semibold text-gray-800">
+              <h3
+                className={`mt-4 text-lg font-semibold ${theme === "dark" ? "text-slate-100" : "text-gray-800"
+                  }`}
+              >
                 {instructor.name}
               </h3>
-              <p className="text-sm text-indigo-600 font-medium">
+              <p
+                className={`text-sm font-medium ${theme === "dark" ? "text-indigo-400" : "text-indigo-600"
+                  }`}
+              >
                 {instructor.role}
               </p>
               {/* Bio */}
-              <p className="mt-3 text-gray-600 text-sm">{instructor.bio}</p>
+              <p
+                className={`mt-3 text-sm ${theme === "dark" ? "text-slate-400" : "text-gray-600"
+                  }`}
+              >
+                {instructor.bio}
+              </p>
             </div>
           ))}
         </div>

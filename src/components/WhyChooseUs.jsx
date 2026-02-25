@@ -1,6 +1,6 @@
 import { BookOpen, UserCheck, Award } from "lucide-react";
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({ theme }) {
   const steps = [
     {
       icon: <BookOpen size={36} />,
@@ -20,22 +20,42 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
-      <div className="max-w mx-auto px-6 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-gray-800">
+    <section
+      id="about"
+      className={`py-20 ${theme === "dark" ? "bg-slate-950" : "bg-gray-50"
+        }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2
+          className={`text-3xl sm:text-4xl font-bold mb-12 ${theme === "dark" ? "text-slate-100" : "text-gray-800"
+            }`}
+        >
           Why Choose CoachingHub?
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300"
+              className={`flex flex-col items-center p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ${theme === "dark"
+                ? "bg-slate-900 border border-slate-800"
+                : "bg-white"
+                }`}
             >
-              <div className="text-indigo-600 mb-6">{step.icon}</div>
-              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-gray-800">
+              <div
+                className={`mb-6 ${theme === "dark" ? "text-indigo-400" : "text-indigo-600"
+                  }`}
+              >
+                {step.icon}
+              </div>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-gray-600">
                 {step.title}
               </h3>
-              <p className="text-gray-600 text-center">{step.desc}</p>
+              <p
+                className={`text-center ${theme === "dark" ? "text-slate-400" : "text-gray-600"
+                  }`}
+              >
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>

@@ -14,9 +14,9 @@ export default function AllTests() {
       <div className="grid md:grid-cols-2 gap-4">
         {tests.map((t) => (
           <div key={t.id} className="bg-white shadow rounded-xl p-4">
-            <h3 className="font-bold">{t.name}</h3>
-            <p>{t.questions} Questions</p>
-            <p>{t.duration} Minutes</p>
+            <h3 className="font-bold text-gray-900">{t.name}</h3>
+            <p className="text-gray-600">{t.questions} Questions</p>
+            <p className="text-gray-600">{t.duration} Minutes</p>
 
             <button
               onClick={() => navigate(`/test/${t.id}`)}

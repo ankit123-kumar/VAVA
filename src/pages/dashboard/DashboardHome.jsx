@@ -11,7 +11,7 @@ export default function DashboardHome({ upcomingTests, recentResults }) {
         ].map((stat, i) => (
           <div key={i} className="bg-white p-4 rounded-xl shadow">
             <p className="text-gray-500">{stat.label}</p>
-            <h3 className="text-2xl font-bold mt-2">{stat.value}</h3>
+            <h3 className="text-2xl font-bold mt-2 text-gray-900">{stat.value}</h3>
           </div>
         ))}
       </div>
@@ -22,7 +22,7 @@ export default function DashboardHome({ upcomingTests, recentResults }) {
         {upcomingTests.map((test) => (
           <div key={test.id} className="bg-white p-4 rounded-xl shadow flex justify-between">
             <div>
-              <h4 className="font-semibold">{test.name}</h4>
+              <h4 className="font-semibold text-gray-900">{test.name}</h4>
               <p className="text-gray-500 text-sm">{test.date}</p>
             </div>
             <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg">

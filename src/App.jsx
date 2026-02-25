@@ -53,7 +53,7 @@ function App() {
           <Route
             element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme} />}
           >
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage theme={theme}/>} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />

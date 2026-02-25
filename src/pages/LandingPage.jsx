@@ -12,26 +12,26 @@ import FAQ from "../components/FAQ";
 import CTA from "../components/CTA";
 import LoginSignupCard from "./LoginSignupCard";
 
-export default function LandingPage() {
-   const [showLogin, setShowLogin] = useState(false);
+export default function LandingPage({ theme }) {
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <div>
       {/* <Navbar onLoginClick={() => setShowLogin(true)}/> */}
-      <HeroSection />
-      <FeaturedCourses />
-      <WhyChooseUs />
-          <HowItWorks />
-          <Testimonials />
-          <Instructors />
-          <Pricing />
-          <FAQ />
-          <CTA />
-      <Footer />
+      <HeroSection theme={theme} />
+      <FeaturedCourses theme={theme} />
+      <WhyChooseUs theme={theme} />
+      <HowItWorks theme={theme} />
+      <Testimonials theme={theme} />
+      <Instructors theme={theme} />
+      <Pricing theme={theme} />
+      <FAQ theme={theme} />
+      <CTA theme={theme} />
+      <Footer theme={theme} />
 
-            {/* Show Login/Signup */}
+      {/* Show Login/Signup */}
       {/* {showLogin && <LoginSignupCard onClose={() => setShowLogin(false)} />} */}
 
-  
+
     </div>
   );
 }

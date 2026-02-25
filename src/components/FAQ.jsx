@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-export default function FAQ() {
+export default function FAQ({ theme }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [

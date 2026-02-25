@@ -135,7 +135,7 @@ export default function StudentDashboard() {
               <Menu />
             </button>
 
-            <h2 className="text-xl md:text-2xl font-semibold">
+            <h2 className="text-xl md:text-2xl font-semibold text-gray-900">
               Welcome, Student 👋
             </h2>
           </div>

@@ -2,7 +2,7 @@ import { ArrowRight, PlayCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function HeroSection() {
+export default function HeroSection({ theme }) {
   const subjects = ["Mathematics", "Chemistry", "Physics", "English"];
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
@@ -37,7 +37,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen bg-gradient-to-r from-indigo-100 via-pink-100 to-purple-100 text-gray-900 overflow-hidden flex items-center pt-24"
+      className={`relative w-full min-h-screen bg-linear-to-r ${theme === 'dark' ? 'from-blue-400 via-violet-300 to-fuchsia-400' : 'from-indigo-100 via-pink-100 to-purple-100'} text-gray-900 overflow-hidden flex items-center pt-24`}
     >
       {/* Background Floating Shapes */}
       <div className="absolute top-20 left-10 w-40 h-40 bg-pink-300/30 rounded-full blur-3xl animate-float-slow"></div>
@@ -49,13 +49,23 @@ export default function HeroSection() {
         <div className="flex-1 text-center md:text-left space-y-6">
           <h1 className="text-3xl md:text-5xl font-extrabold leading-snug">
             Master{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 via-pink-500 to-orange-500">
+            <span
+              className={`bg-clip-text text-transparent bg-linear-to-r ${theme === "dark"
+                  ? "from-amber-400 via-fuchsia-500 to-orange-400"
+                  : "from-yellow-500 via-pink-500 to-orange-500"
+                }`}
+            >
               {displayText}
               <span className="animate-pulse">|</span>
             </span>
             <br />
             Build Your{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 animate-text-shimmer">
+            <span
+              className={`bg-clip-text text-transparent bg-linear-to-r animate-text-shimmer ${theme === "dark"
+                ? "from-cyan-400 via-sky-500 to-indigo-500"
+                : "from-cyan-500 via-blue-500 to-indigo-500"
+                }`}
+            >
               Future
             </span>
           </h1>
