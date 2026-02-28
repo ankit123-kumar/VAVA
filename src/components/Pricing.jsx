@@ -43,7 +43,7 @@ export default function Pricing({ theme }) {
     <section
       id="pricing"
       className={`relative py-24 ${theme === "dark"
-          ? "bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950"
+          ? "bg-slate-950"
           : "bg-linear-to-br from-indigo-50 via-white to-purple-50"
         }`}
     >

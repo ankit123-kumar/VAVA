@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function CoursesPage() {
+export default function CoursesPage({theme}) {
   const [courses] = useState([
     {
       id: 1,
@@ -14,7 +14,7 @@ export default function CoursesPage() {
       playlistUrl:
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCphGOBPDixyoCm1nE_Hr3Jtv",
     },
-     {
+    {
       id: 2,
       title: "Foundation Course",
       description: "A comprehensive foundation course designed to strengthen your basic mathematics concepts from scratch.",
@@ -38,7 +38,7 @@ export default function CoursesPage() {
       playlistUrl:
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpjoJ25GOhocVtM7se3LI-jp",
     },
-     {
+    {
       id: 4,
       title: "C-TET",
       description: "A complete preparation course C-TET exam.",
@@ -50,7 +50,7 @@ export default function CoursesPage() {
       playlistUrl:
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCph2D6N7TSHDuOeu45DqzrrM",
     },
-     {
+    {
       id: 5,
       title: "Class 11th Maths",
       description: "Class 11 Maths series by vimal sir",
@@ -74,7 +74,7 @@ export default function CoursesPage() {
       playlistUrl:
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpgbYL7hxR-ub5T_2EDH4Y5i",
     },
-     {
+    {
       id: 7,
       title: "Class 10th Maths",
       description: "Class 10 Maths series by vimal sir",
@@ -98,7 +98,7 @@ export default function CoursesPage() {
       playlistUrl:
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpjMLYDGLSmzFLOa4e7V5a6m",
     },
-     {
+    {
       id: 9,
       title: "UP-TET",
       description: "UP-TET exam series by vimal sir",
@@ -110,7 +110,7 @@ export default function CoursesPage() {
       playlistUrl:
         "https://www.youtube.com/playlist?list=PL_LOtQ_WWCpiYfaCzwiDojZ4qraBBWiGP",
     },
-     {
+    {
       id: 10,
       title: "SSC-CGL,CHSL,MTS,RRB,NTPC",
       description: "All SSC exam series by vimal sir",
@@ -149,12 +149,23 @@ export default function CoursesPage() {
     window.open(url, "_blank");
   };
 
+  const isDark = theme === "dark";
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div
+      className={`min-h-screen transition-colors duration-500 ${isDark ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
+        }`}
+    >
       {/* Header */}
       <div className="text-center py-12">
-        <h1 className="text-4xl font-bold text-gray-800">Our Courses</h1>
-        <p className="mt-2 text-gray-600">
+        <h1
+          className={`text-4xl font-bold ${isDark ? "text-white" : "text-gray-800"
+            }`}
+        >
+          Our Courses
+        </h1>
+
+        <p className={`mt-2 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
           Learn programming with high-quality, practical tutorials.
         </p>
       </div>
@@ -165,17 +176,20 @@ export default function CoursesPage() {
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`px-5 py-2 rounded-full font-medium transition ${
-              tab === t
-                ? "bg-indigo-600 text-white shadow-md"
-                : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-100"
-            }`}
+            className={`px-5 py-2 rounded-full font-medium transition ${tab === t
+                ? isDark
+                  ? "bg-indigo-600 text-white shadow-md"
+                  : "bg-indigo-600 text-white shadow-md"
+                : isDark
+                  ? "bg-gray-900 border border-gray-700 text-gray-300 hover:bg-gray-800"
+                  : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-100"
+              }`}
           >
             {t === "all"
               ? "All Courses"
               : t === "free"
-              ? "Free Courses"
-              : "Premium Courses"}
+                ? "Free Courses"
+                : "Premium Courses"}
           </button>
         ))}
       </div>
@@ -185,7 +199,10 @@ export default function CoursesPage() {
         {filtered.map((course) => (
           <div
             key={course.id}
-            className="group bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col"
+            className={`group rounded-xl border overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col ${isDark
+                ? "bg-gray-900 border-gray-800 shadow-lg"
+                : "bg-white border-gray-200 shadow-md"
+              }`}
           >
             {/* Image */}
             <div className="relative">
@@ -201,12 +218,18 @@ export default function CoursesPage() {
             </div>
 
             {/* Content */}
-            <div className="p-5">
-              <h2 className="text-lg font-bold text-gray-800">
+            <div className="p-5 flex flex-col flex-grow">
+              <h2
+                className={`text-lg font-bold ${isDark ? "text-white" : "text-gray-800"
+                  }`}
+              >
                 {course.title}
               </h2>
 
-              <p className="text-sm text-gray-600 mt-2">
+              <p
+                className={`text-sm mt-2 ${isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
+              >
                 {course.description}
               </p>
 
@@ -214,15 +237,22 @@ export default function CoursesPage() {
                 <span className="text-indigo-600 font-bold text-lg">
                   Free
                 </span>
-                <span className="text-gray-500 text-sm italic">
+
+                <span
+                  className={`text-sm italic ${isDark ? "text-gray-500" : "text-gray-500"
+                    }`}
+                >
                   {course.level}
                 </span>
               </div>
 
-              {/* 🔥 Button open full playlist */}
+              {/* Button */}
               <button
                 onClick={() => handleWatch(course.playlistUrl)}
-                className="w-full mt-5 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium shadow-md hover:from-indigo-700 hover:to-purple-700 transition-all duration-300"
+                className={`w-full mt-5 py-2 rounded-md font-medium shadow-md transition-all duration-300 ${isDark
+                    ? "bg-linear-to-r from-indigo-700 to-purple-700 text-white hover:from-indigo-600 hover:to-purple-600"
+                    : "bg-linear-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700"
+                  }`}
               >
                 Watch Full Playlist
               </button>
