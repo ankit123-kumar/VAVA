@@ -47,21 +47,21 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-white text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-500">
-        <ScrollProgress />
 
         <Routes>
           {/* Public Pages */}
           <Route
             element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme} />}
           >
-            <Route path="/" element={<LandingPage theme={theme}/>} />
-            <Route path="/courses" element={<CoursesPage theme={theme}/>} />
-            <Route path="/about" element={<AboutPage theme={theme}/>} />
-            <Route path="/contact" element={<ContactPage theme={theme}/>} />
-            <Route path="/gallary" element={<Gallery theme={theme}/>} />
+            <Route path="/" element={<LandingPage theme={theme} />} />
+            <Route path="/courses" element={<CoursesPage theme={theme} />} />
+            <Route path="/about" element={<AboutPage theme={theme} />} />
+            <Route path="/contact" element={<ContactPage theme={theme} />} />
+            <Route path="/gallary" element={<Gallery theme={theme} />} />
           </Route>
 
           <Route path="/auth" element={<AuthCard />} />
+
 
           {/* Student Pages */}
           <Route element={<StudentLayout />}>
