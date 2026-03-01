@@ -1,7 +1,7 @@
 // src/layouts/PublicLayout.jsx
-import Navbar from "../components/Navbar";
+import Navbar from "../components/landing/Navbar";
 import { Outlet } from "react-router-dom";
-import ScrollProgress from "../components/ScrollProgress";
+import ScrollProgress from "../components/landing/ScrollProgress";
 
 export default function PublicLayout({ toggleTheme, currentTheme }) {
   return (

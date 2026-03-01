@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 import LandingPage from "./pages/LandingPage";
-import ScrollProgress from "./components/ScrollProgress";
+import ScrollProgress from "./components/landing/ScrollProgress";
 import CoursesPage from "./pages/CoursesPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import AboutPage from "./pages/AboutPage";
@@ -57,7 +57,7 @@ function App() {
             <Route path="/courses" element={<CoursesPage theme={theme} />} />
             <Route path="/about" element={<AboutPage theme={theme} />} />
             <Route path="/contact" element={<ContactPage theme={theme} />} />
-            <Route path="/gallary" element={<Gallery theme={theme} />} />
+            <Route path="/gallery" element={<Gallery theme={theme} />} />
           </Route>
 
           <Route path="/auth" element={<AuthCard />} />

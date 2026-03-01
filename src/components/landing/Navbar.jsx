@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Sun, Moon, Mail, Lock, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar({ toggleTheme, currentTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,9 +9,8 @@ export default function Navbar({ toggleTheme, currentTheme }) {
   const handleToggle = () => setIsOpen(!isOpen);
 
   const linkClass = ({ isActive }) =>
-  `transition duration-300 hover:text-indigo-500 ${
-    isActive ? "text-indigo-600 font-semibold" : ""
-  }`;
+    `transition duration-300 hover:text-indigo-500 ${isActive ? "text-indigo-600 font-semibold" : ""
+    }`;
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 transition-colors duration-500">
@@ -30,11 +30,11 @@ export default function Navbar({ toggleTheme, currentTheme }) {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-8 text-gray-700 dark:text-gray-200 font-medium">
-          <a href="/" className={linkClass}>Home</a>
-          <a href="/courses" className={linkClass}>Courses</a>
-          <a href="/about" className={linkClass}>About</a>
-          <a href="/contact" className={linkClass}>Contact</a>
-          <a href="/gallery" className={linkClass}>Gallery</a>
+          <NavLink to="/" className={linkClass}>Home</NavLink>
+          <NavLink to="/courses" className={linkClass}>Courses</NavLink>
+          <NavLink to="/about" className={linkClass}>About</NavLink>
+          <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+          <NavLink to="/gallery" className={linkClass}>Gallery</NavLink>
         </nav>
 
         {/* Desktop Actions */}
@@ -75,7 +75,7 @@ export default function Navbar({ toggleTheme, currentTheme }) {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden overflow-hidden transition-all duration-500 ${isOpen ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
           }`}
       >
         <div className="px-6 pb-6 pt-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 space-y-4">
