@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 import LandingPage from "./pages/LandingPage";
-import ScrollProgress from "./components/ScrollProgress";
+import ScrollProgress from "./components/landing/ScrollProgress";
 import CoursesPage from "./pages/CoursesPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import AboutPage from "./pages/AboutPage";
@@ -14,6 +14,7 @@ import TestPage from "./pages/dashboard/TestPage";
 
 import PublicLayout from "./layouts/PublicLayout";
 import StudentLayout from "./layouts/StudentLayout";
+import AuthCard from "./components/auth/AuthCard";
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -45,20 +46,22 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
-        <ScrollProgress />
+      <div className="min-h-screen bg-white text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-500">
 
         <Routes>
           {/* Public Pages */}
           <Route
             element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme} />}
           >
-            <Route path="/" element={<LandingPage theme={theme}/>} />
-            <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/gallary" element={<Gallery />} />
+            <Route path="/" element={<LandingPage theme={theme} />} />
+            <Route path="/courses" element={<CoursesPage theme={theme} />} />
+            <Route path="/about" element={<AboutPage theme={theme} />} />
+            <Route path="/contact" element={<ContactPage theme={theme} />} />
+            <Route path="/gallery" element={<Gallery theme={theme} />} />
           </Route>
+
+          <Route path="/auth" element={<AuthCard />} />
+
 
           {/* Student Pages */}
           <Route element={<StudentLayout />}>

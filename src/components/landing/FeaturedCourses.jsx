@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { courses } from "../data/courses";
+import { courses } from "../../assets/data/courses";
 
 export default function FeaturedCourses({ theme }) {
   const sliderRef = useRef(null);
@@ -43,7 +43,7 @@ export default function FeaturedCourses({ theme }) {
   return (
     <section
       className={`py-20 overflow-hidden ${theme === "dark"
-          ? "bg-linear-to-b from-slate-950 to-slate-900"
+          ? "bg-slate-950"
           : "bg-linear-to-b from-white to-gray-100"
         }`}
     >
