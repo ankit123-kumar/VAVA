@@ -1,6 +1,6 @@
 // src/pages/ContactPage.jsx
 import { MapPin, Phone, Mail } from "lucide-react";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../hooks/UseTheme";
 
 export default function ContactPage() {
   const [theme] = useTheme();

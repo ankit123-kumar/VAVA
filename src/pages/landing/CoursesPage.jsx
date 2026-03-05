@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../hooks/UseTheme";
 
 export default function CoursesPage() {
   const [theme] = useTheme();

@@ -1,6 +1,6 @@
 // src/pages/AboutPage.jsx
 import { GraduationCap, Users, Target, BookOpen } from "lucide-react";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../hooks/UseTheme";
 
 export default function AboutPage() {
   const [theme] = useTheme();
