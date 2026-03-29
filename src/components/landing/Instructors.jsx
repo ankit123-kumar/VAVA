@@ -1,96 +1,139 @@
+import { motion } from "framer-motion";
 export default function Instructors({ theme }) {
   const instructors = [
     {
-      name: "Dr. Neha Kapoor",
-      role: "Data Science Mentor",
-      image: "https://randomuser.me/api/portraits/women/68.jpg",
-      bio: "PhD in Computer Science with 8+ years of teaching data science and AI.",
+      name: "Mr. Vimal Gupta",
+      role: "Mathematics Expert",
+      image: "/profile/vimalSirProfile3.jpeg",
+      bio: "PhD in Mathematics with 15+ years of teaching Mathematics.",
+      exp: "15+ Years",
     },
     {
-      name: "Arjun Patel",
-      role: "Full Stack Developer",
-      image: "https://randomuser.me/api/portraits/men/52.jpg",
-      bio: "Ex-Google engineer, now teaching MERN stack and cloud technologies.",
+      name: "Sabnam Ma'am",
+      role: "Chemistry Expert",
+      image: "/profile/sabnam.jpeg",
+      bio: "Msc in Chemistry with 10+ years of teaching experience.",
+      exp: "10+ Years",
     },
     {
-      name: "Sanya Mehra",
-      role: "UI/UX Designer",
-      image: "https://randomuser.me/api/portraits/women/65.jpg",
-      bio: "Creative designer with 6+ years in product design and user research.",
+      name: "Divyansh Sir",
+      role: "Mathematics Expert",
+      image: "/profile/abc.jpeg",
+      bio: "Btech with 10+ years in teaching.",
+      exp: "10+ Years",
     },
     {
-      name: "Rohan Sharma",
-      role: "Cybersecurity Expert",
-      image: "https://randomuser.me/api/portraits/men/45.jpg",
-      bio: "Certified Ethical Hacker with hands-on industry experience.",
+      name: "K P Sir",
+      role: "Physics Expert",
+      image: "/profile/kpSir.jpeg",
+      bio: "Msc B.ed with hands-on 15 year of experience.",
+      exp: "15+ Years",
+    },
+    {
+      name: "Mr. Vishal Sharma",
+      role: "Biology Expert",
+      image: "/profile/vishalSharma.jpeg",
+      bio: "B.ed with hands-on 15 year of experience.",
+      exp: "15+ Years",
     },
   ];
 
   return (
     <section
-      id="instructors"
-      className={`py-20 ${theme === "dark" ? "bg-slate-950" : "bg-gray-50"
-        }`}
+      className={`relative py-24 overflow-hidden ${
+        theme === "dark"
+          ? "bg-slate-950"
+          : "bg-gradient-to-b from-white to-indigo-50"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      {/* Background Blur */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-indigo-400 opacity-20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-400 opacity-20 rounded-full blur-3xl"></div>
+
+      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         {/* Heading */}
         <h2
-          className={`text-3xl md:text-4xl font-extrabold ${theme === "dark" ? "text-slate-100" : "text-gray-800"
-            }`}
+          className={`text-4xl md:text-5xl font-extrabold ${
+            theme === "dark" ? "text-slate-100" : "text-gray-800"
+          }`}
         >
           Meet Our{" "}
-          <span className={theme === "dark" ? "text-indigo-400" : "text-indigo-600"}>
-            Instructors
+          <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Expert Instructors
           </span>
         </h2>
+
         <p
-          className={`mt-3 max-w-2xl mx-auto ${theme === "dark" ? "text-slate-400" : "text-gray-600"
-            }`}
+          className={`mt-4 max-w-2xl mx-auto ${
+            theme === "dark" ? "text-slate-300" : "text-gray-600"
+          }`}
         >
-          Learn from experienced mentors who bring real-world expertise into
-          every lesson.
+          Learn from industry experts with years of real-world experience.
         </p>
 
-        {/* Instructors Grid */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {instructors.map((instructor, index) => (
-            <div
-              key={index}
-              className={`rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6 ${theme === "dark"
-                  ? "bg-slate-900 border border-slate-800 hover:shadow-indigo-500/10"
-                  : "bg-white"
-                }`}
-            >
-              {/* Instructor Image */}
+     <div className="mt-16 overflow-hidden w-full py-6"> {/* 👈 padding added */}
+  <motion.div
+    className="flex gap-8 w-max"
+    animate={{ x: ["0%", "-100%"] }}
+    transition={{
+      ease: "linear",
+      duration: 40, // 👈 slower (premium feel)
+      repeat: Infinity,
+    }}
+  >
+    {[...instructors, ...instructors].map((ins, i) => (
+      <div
+        key={i}
+        className="min-w-[260px] group relative p-[1px] rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-300"
+      >
+        {/* Card */}
+        <div
+          className={`rounded-2xl p-6 backdrop-blur-xl transition-transform duration-300 group-hover:scale-105 ${
+            theme === "dark"
+              ? "bg-slate-900/80 border border-white/20"
+              : "bg-white"
+          }`}
+        >
+          {/* Image */}
+          <div className="relative w-24 h-24 mx-auto">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 blur opacity-30"></div>
+
+            <div className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-white">
               <img
-                src={instructor.image}
-                alt={instructor.name}
-                className={`w-28 h-28 rounded-full mx-auto object-cover border-4 ${theme === "dark" ? "border-indigo-500/30" : "border-indigo-100"
-                  }`}
+                src={ins.image}
+                alt={ins.name}
+                className="w-full h-full object-contain"
               />
-              {/* Name + Role */}
-              <h3
-                className={`mt-4 text-lg font-semibold ${theme === "dark" ? "text-slate-100" : "text-gray-800"
-                  }`}
-              >
-                {instructor.name}
-              </h3>
-              <p
-                className={`text-sm font-medium ${theme === "dark" ? "text-indigo-400" : "text-indigo-600"
-                  }`}
-              >
-                {instructor.role}
-              </p>
-              {/* Bio */}
-              <p
-                className={`mt-3 text-sm ${theme === "dark" ? "text-slate-400" : "text-gray-600"
-                  }`}
-              >
-                {instructor.bio}
-              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Info */}
+          <h3
+            className={`mt-4 text-md font-semibold ${
+              theme === "dark" ? "text-slate-100" : "text-gray-800"
+            }`}
+          >
+            {ins.name}
+          </h3>
+
+          <p className="text-indigo-500 text-sm">{ins.role}</p>
+
+          <span className="inline-block mt-2 px-2 py-1 text-xs rounded-full bg-indigo-100 text-indigo-600">
+            {ins.exp}
+          </span>
+
+          <p
+            className={`mt-2 text-xs ${
+              theme === "dark" ? "text-slate-300" : "text-gray-600"
+            }`}
+          >
+            {ins.bio}
+          </p>
         </div>
+      </div>
+    ))}
+  </motion.div>
+</div>
       </div>
     </section>
   );

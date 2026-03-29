@@ -4,33 +4,83 @@ const galleryData = [
   {
     id: 1,
     category: "coaching",
-    img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+    img: "gallary/1.jpeg",
     title: "Coaching Session",
   },
   {
     id: 2,
+    category: "trip",
+    img: "gallary/2.jpeg",
+    title: "Team Trip",
+  },
+   {
+    id: 3,
     category: "coaching",
-    img: "https://images.unsplash.com/photo-1509062522246-3755977927d7",
+    img: "gallary/3.jpeg",
+    title: "Group Coaching",
+  },
+   {
+    id: 4,
+    category: "coaching",
+    img: "gallary/7.jpeg",
+    title: "Group Coaching",
+  },
+   {
+    id: 5,
+    category: "coaching",
+    img: "gallary/8.jpeg",
+    title: "Group Coaching",
+  },
+   {
+    id:6,
+    category: "coaching",
+    img: "gallary/10.jpeg",
     title: "Group Coaching",
   },
   {
-    id: 3,
+    id: 7,
     category: "trip",
-    img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    img: "gallary/5.jpeg",
     title: "Adventure Trip",
   },
   {
-    id: 4,
+    id: 8,
     category: "trip",
-    img: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1",
+    img: "gallary/6.jpeg",
     title: "Team Trip",
   },
   {
-    id: 5,
-    category: "event",
-    img: "https://images.unsplash.com/photo-1515169067868-5387ec356754",
-    title: "Company Event",
+    id: 9,
+    category: "coaching",
+    img: "gallary/9.jpeg",
+    title: "Group Coaching",
   },
+  {
+    id: 10,
+    category: "trip",
+    img: "gallary/13.jpeg",
+    title: "Team Trip",
+  },
+  {
+    id: 11,
+    category: "trip",
+    img: "gallary/15.jpeg",
+    title: "Team Trip",
+  },
+  {
+    id: 12,
+    category: "trip",
+    img: "gallary/4.jpeg",
+    title: "Adventure Trip",
+  },
+
+   {
+    id: 13,
+    category: "event",
+    img: "gallary/12.jpeg",
+    title: "Event Celebration",
+  },
+  
 ];
 
 export default function Gallery() {

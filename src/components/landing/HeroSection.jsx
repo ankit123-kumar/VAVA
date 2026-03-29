@@ -8,6 +8,19 @@ export default function HeroSection({ theme }) {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+useEffect(() => {
+  const handleMouseMove = (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    setMouse({ x, y });
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, []);
+
   useEffect(() => {
     const currentWord = subjects[index];
     let timeout;
@@ -89,45 +102,40 @@ export default function HeroSection({ theme }) {
         </div>
 
         {/* Right Illustration with Landing Effect */}
-        <motion.div
-          initial={{ y: -100, opacity: 0, scale: 0.8 }}
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="flex-1 h-full flex justify-center md:justify-end mt-10 md:mt-0 relative"
-        >
-          <img
-            src="/herobackNew.png"
-            alt="Learning Illustration"
-            className="h-[60%] md:h-[80%] w-auto object-contain drop-shadow-2xl"
-
-            
-          />
-
-          {/* Floating Icons
 <motion.div
-  animate={{ y: [0, -15, 0] }}
-  transition={{ duration: 4, repeat: Infinity }}
-  className="absolute top-10 left-10 text-yellow-400"
+  initial={{ y: -80, opacity: 0, scale: 0.9 }}
+  animate={{
+    y: [0, -20, 0], // floating effect 🔥
+    opacity: 1,
+    scale: 1,
+    x: mouse.x, // mouse parallax
+  }}
+  transition={{
+    y: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+    opacity: { duration: 1 },
+    scale: { duration: 1 },
+    x: { type: "spring", stiffness: 50 },
+  }}
+  className="flex-1 h-full flex justify-center md:justify-end mt-10 md:mt-0 relative"
 >
-  📚
+  <motion.img
+    src="/herobackNew.png"
+    alt="Learning Illustration"
+    className="h-[60%] md:h-[80%] w-auto object-contain drop-shadow-2xl"
+    animate={{
+      rotate: [0, 1.5, -1.5, 0], // subtle rotation
+    }}
+    transition={{
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
 </motion.div>
-
-<motion.div
-  animate={{ y: [0, 20, 0] }}
-  transition={{ duration: 5, repeat: Infinity }}
-  className="absolute bottom-10 right-10 text-pink-400"
->
-  ✏️
-</motion.div>
-
-<motion.div
-  animate={{ x: [0, 20, 0] }}
-  transition={{ duration: 6, repeat: Infinity }}
-  className="absolute top-1/2 left-0 text-indigo-400"
->
-  🎓
-</motion.div> */}
-        </motion.div>
       </div>
 
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce text-xl">
